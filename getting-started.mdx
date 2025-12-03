@@ -1,0 +1,105 @@
+---
+title: Getting Started
+description: Step-by-step guide to setting up and using Paperguide
+---
+
+## Account Setup
+
+To get started with Paperguide, create an account and verify your email address. Once verified, you can access the full suite of research tools.
+
+<Steps>
+  <Step title="Create Account" icon="user-plus">
+    Visit the Paperguide website and click "Sign Up". Provide your academic institution, email, and create a secure password.
+  </Step>
+  <Step title="Verify Email" icon="mail">
+    Check your email for a verification link. Click the link to activate your account.
+  </Step>
+  <Step title="Complete Profile" icon="settings">
+    Add your research interests, academic field, and profile picture to personalize your experience.
+  </Step>
+  <Step title="Upload Initial Documents" icon="upload">
+    Start by uploading some research papers or documents to begin building your knowledge base.
+  </Step>
+</Steps>
+
+## First Research Project
+
+<Columns cols={2}>
+  <Card title="Create Project" icon="folder-plus" href="#create-project">
+    Set up your first research project to organize papers and notes.
+  </Card>
+  <Card title="Import Papers" icon="file-text" href="#import-papers">
+    Import existing papers from your computer or academic databases.
+  </Card>
+</Columns>
+
+<CodeGroup tabs="Web Interface,API">
+  ````javascript
+// Using the web interface:
+// 1. Click "New Project" in the dashboard
+// 2. Enter project name and description
+// 3. Upload initial research papers
+// 4. Set research goals and keywords
+  ````
+  ````python
+from paperguide import Project
+
+# Create a new research project
+project = Project.create(
+    name="AI in Education Research",
+    description="Exploring AI applications in educational settings",
+    keywords=["artificial intelligence", "education", "machine learning"]
+)
+
+# Add initial papers
+project.add_papers([
+    "path/to/paper1.pdf",
+    "path/to/paper2.pdf"
+])
+````
+</CodeGroup>
+
+## Basic Navigation
+
+<Tabs>
+  <Tab title="Dashboard" icon="home">
+    Your main hub for projects, recent activity, and quick access to tools.
+  </Tab>
+  <Tab title="Research Library" icon="book-open">
+    Browse and search through your uploaded papers and AI recommendations.
+  </Tab>
+  <Tab title="Writing Tools" icon="edit">
+    Access the writing assistant and citation manager.
+  </Tab>
+</Tabs>
+
+## Initial Configuration
+
+Configure Paperguide to match your research workflow and preferences.
+
+<Expandable title="Research Preferences" default-open="false">
+  Set your preferred academic fields, citation styles, and notification settings.
+</Expandable>
+
+<Expandable title="API Access" default-open="false">
+  Generate API keys for programmatic access to Paperguide features.
+</Expandable>
+
+<Callout kind="info">
+  Your initial setup determines how Paperguide tailors recommendations and analysis to your needs.
+</Callout>
+
+## Troubleshooting Common Issues
+
+<ExpandableGroup>
+  <Expandable title="Upload Failures" default-open="false">
+    If document uploads fail, check file size limits and supported formats (PDF, DOCX, TXT).
+  </Expandable>
+  <Expandable title="Email Verification" default-open="false">
+    If you don't receive verification emails, check your spam folder or update your email preferences.
+  </Expandable>
+</ExpandableGroup>
+
+## Next Steps
+
+Once set up, explore advanced features like AI-powered analysis and collaboration tools. Check the features page for detailed guides on each capability.

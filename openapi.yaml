@@ -1,0 +1,159 @@
+openapi: '3.0.0'
+info:
+  version: 1.0.0
+  title: Paperguide API
+  license:
+    name: MIT
+servers:
+  - url: https://api.paperguide.com/v1
+paths:
+  /research:
+    get:
+      summary: Retrieve a list of research papers based on search criteria. This endpoint allows users to query the extensive database of academic papers using various filters such as keywords, authors, publication dates, and research fields. It supports pagination for handling large result sets and provides detailed metadata for each paper including abstracts, citations, and download links.
+      operationId: listResearch
+      parameters:
+        - name: query
+          in: query
+          description: Search query string containing keywords or phrases
+          required: false
+          schema:
+            type: string
+        - name: limit
+          in: query
+          description: Maximum number of results to return
+          required: false
+          schema:
+            type: integer
+            format: int32
+      responses:
+        200:
+          description: Successful response with list of research papers
+          headers:
+            x-next:
+              description: Link to next page of results
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResearchPapers'
+        default:
+          description: Unexpected error occurred during the request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      summary: Upload and analyze a new research paper. This endpoint accepts PDF or document files and processes them using AI algorithms to extract key information, generate summaries, and identify relevant research connections. The analysis includes topic classification, key finding extraction, and citation relationship mapping.
+      operationId: createResearch
+      responses:
+        201:
+          description: Research paper successfully uploaded and queued for analysis
+        default:
+          description: Unexpected error occurred during upload or processing
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /research/{paperId}:
+    get:
+      summary: Retrieve detailed information about a specific research paper. This endpoint provides comprehensive metadata, full-text content when available, analysis results, and citation information for an individual paper identified by its unique ID.
+      operationId: getResearchPaper
+      parameters:
+        - name: paperId
+          in: path
+          required: true
+          description: Unique identifier of the research paper
+          schema:
+            type: string
+      responses:
+        200:
+          description: Detailed information about the requested research paper
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResearchPaper'
+        default:
+          description: Unexpected error occurred while retrieving paper information
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /users:
+    get:
+      summary: Retrieve a list of users in the system. This endpoint provides access to user profiles and basic information for account management and collaboration features. It supports filtering by user roles, research fields, and activity status.
+      operationId: listUsers
+      parameters:
+        - name: role
+          in: query
+          description: Filter users by their role in the system
+          required: false
+          schema:
+            type: string
+      responses:
+        200:
+          description: Successful response with list of users
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Users'
+        default:
+          description: Unexpected error occurred during user retrieval
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  schemas:
+    ResearchPaper:
+      required:
+        - id
+        - title
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+        authors:
+          type: array
+          items:
+            type: string
+        abstract:
+          type: string
+        publication_date:
+          type: string
+          format: date
+        doi:
+          type: string
+    ResearchPapers:
+      type: array
+      items:
+        $ref: '#/components/schemas/ResearchPaper'
+    User:
+      required:
+        - id
+        - email
+      properties:
+        id:
+          type: integer
+          format: int64
+        email:
+          type: string
+        name:
+          type: string
+        role:
+          type: string
+    Users:
+      type: array
+      items:
+        $ref: '#/components/schemas/User'
+    Error:
+      required:
+        - code
+        - message
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string

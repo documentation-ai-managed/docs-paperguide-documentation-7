@@ -1,0 +1,176 @@
+---
+title: Features
+description: Comprehensive overview of Paperguide's core features and capabilities
+---
+
+## AI-Powered Research Assistant
+
+Paperguide's research assistant uses advanced machine learning to help you discover, analyze, and synthesize academic literature.
+
+<Columns cols={3}>
+  <Card title="Smart Search" icon="search" href="#smart-search">
+    Find relevant papers using natural language queries and AI-powered recommendations.
+  </Card>
+  <Card title="Content Analysis" icon="bar-chart" href="#content-analysis">
+    Extract key insights, methods, and findings from research papers automatically.
+  </Card>
+  <Card title="Literature Mapping" icon="map" href="#literature-mapping">
+    Visualize connections between papers and identify research gaps.
+  </Card>
+</Columns>
+
+<Tabs>
+  <Tab title="Search Capabilities" icon="search">
+    <Steps>
+      <Step title="Natural Language Queries" icon="message-square">
+        Ask questions like "What are the latest developments in quantum computing?" and get relevant results.
+      </Step>
+      <Step title="Semantic Matching" icon="target">
+        AI understands context and intent, not just keywords.
+      </Step>
+      <Step title="Cross-Disciplinary Discovery" icon="globe">
+        Find connections across different research fields.
+      </Step>
+    </Steps>
+
+    <CodeGroup tabs="Python,JavaScript">
+      ````python
+from paperguide import ResearchAssistant
+
+assistant = ResearchAssistant(api_key="your_key")
+results = assistant.search(
+    query="machine learning in medical diagnosis",
+    max_results=50,
+    include_abstracts=True
+)
+
+for paper in results:
+    print(f"{paper.title} - {paper.authors}")
+````
+      ````javascript
+const { ResearchAssistant } = require('paperguide');
+
+const assistant = new ResearchAssistant('your_key');
+const results = await assistant.search({
+  query: 'machine learning in medical diagnosis',
+  maxResults: 50,
+  includeAbstracts: true
+});
+
+results.forEach(paper => {
+  console.log(`${paper.title} - ${paper.authors.join(', ')}`);
+});
+````
+    </CodeGroup>
+  </Tab>
+  <Tab title="Analysis Tools" icon="bar-chart">
+    <Expandable title="Summarization" default-open="false">
+      Generate concise summaries of long research papers, highlighting key contributions.
+    </Expandable>
+
+    <Expandable title="Key Finding Extraction" default-open="false">
+      Automatically identify and extract important results and conclusions.
+    </Expandable>
+
+    <Expandable title="Methodology Analysis" default-open="false">
+      Understand research methods and experimental designs used in papers.
+    </Expandable>
+  </Tab>
+</Tabs>
+
+## Reference Management
+
+Organize and cite your research materials with intelligent reference management tools.
+
+<Steps>
+  <Step title="Import References" icon="upload">
+    Upload papers and automatically extract citation information.
+  </Step>
+  <Step title="Organize Collections" icon="folder">
+    Create folders and tags to categorize your research materials.
+  </Step>
+  <Step title="Generate Citations" icon="file-text">
+    Auto-generate citations in APA, MLA, Chicago, and other formats.
+  </Step>
+  <Step title="Track Usage" icon="eye">
+    See which papers you've cited and how often you reference them.
+  </Step>
+</Steps>
+
+<Callout kind="tip">
+  Use the reference manager to maintain consistency in your citations across multiple papers.
+</Callout>
+
+## Writing Assistant
+
+Get AI-powered help with drafting, editing, and structuring your research papers.
+
+<CodeGroup tabs="Grammar Check,Style Guide">
+  ````python
+from paperguide import WritingAssistant
+
+assistant = WritingAssistant()
+text = "This is a sample sentence with some errors."
+corrected = assistant.correct_grammar(text)
+print(corrected)  # "This is a sample sentence with some errors."
+````
+  ````python
+from paperguide import WritingAssistant
+
+assistant = WritingAssistant()
+
+# Get style suggestions
+text = "The researchers found that the new method works better."
+suggestions = assistant.suggest_style(text, style="academic")
+print(suggestions)
+# ["Consider using more precise terminology", "Add citation for the method"]
+````
+</CodeGroup>
+
+<ExpandableGroup>
+  <Expandable title="Outline Generation" default-open="false">
+    Create structured outlines for your papers based on your research goals.
+  </Expandable>
+  <Expandable title="Plagiarism Detection" default-open="false">
+    Check your writing against academic databases to ensure originality.
+  </Expandable>
+  <Expandable title="Collaboration Tools" default-open="false">
+    Share drafts with co-authors and track changes in real-time.
+  </Expandable>
+</ExpandableGroup>
+
+## Integration Features
+
+Connect Paperguide with your favorite research tools and platforms.
+
+<Tabs>
+  <Tab title="Academic Databases" icon="database">
+    Direct integration with PubMed, IEEE Xplore, JSTOR, and other databases.
+  </Tab>
+  <Tab title="Writing Software" icon="edit">
+    Export to Microsoft Word, Google Docs, LaTeX, and other writing tools.
+  </Tab>
+  <Tab title="Reference Managers" icon="bookmark">
+    Sync with Zotero, Mendeley, EndNote, and other reference management systems.
+  </Tab>
+</Tabs>
+
+## Advanced Analytics
+
+Gain deeper insights into your research with advanced analytics and visualization tools.
+
+<Callout kind="info">
+  Advanced analytics help identify trends, research gaps, and emerging topics in your field.
+</Callout>
+
+## Customization Options
+
+Tailor Paperguide to your specific research needs and preferences.
+
+<Expandable title="Personalized Recommendations" default-open="false">
+  Train the AI on your reading habits and research interests for better suggestions.
+</Expandable>
+
+<Expandable title="Custom Workflows" default-open="false">
+  Create automated workflows for repetitive research tasks.
+</Expandable>

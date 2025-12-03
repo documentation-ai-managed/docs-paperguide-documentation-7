@@ -1,0 +1,225 @@
+---
+title: API Integration
+description: Guide to integrating Paperguide's API into your applications
+---
+
+## API Overview
+
+Paperguide provides a comprehensive REST API for programmatic access to all platform features. Use the API to integrate research capabilities into your applications.
+
+<Columns cols={2}>
+  <Card title="RESTful Design" icon="code" href="#restful-design">
+    Standard REST endpoints with JSON responses for easy integration.
+  </Card>
+  <Card title="Comprehensive Coverage" icon="check-circle" href="#comprehensive-coverage">
+    Access to all research assistant, reference management, and writing features.
+  </Card>
+</Columns>
+
+## Authentication
+
+Secure your API requests with bearer token authentication.
+
+<Steps>
+  <Step title="Generate API Key" icon="key">
+    Create an API key from your Paperguide account settings.
+  </Step>
+  <Step title="Include in Headers" icon="header">
+    Add the Authorization header to all API requests.
+  </Step>
+  <Step title="Handle Token Expiration" icon="clock">
+    Implement token refresh logic for long-running applications.
+  </Step>
+</Steps>
+
+<CodeGroup tabs="cURL,Python,JavaScript">
+  ````bash
+curl -X GET \
+  'https://api.paperguide.com/v1/research' \
+  -H 'Authorization: Bearer YOUR_API_KEY' \
+  -H 'Content-Type: application/json'
+````
+  ````python
+import requests
+
+headers = {
+    'Authorization': 'Bearer YOUR_API_KEY',
+    'Content-Type': 'application/json'
+}
+
+response = requests.get(
+    'https://api.paperguide.com/v1/research',
+    headers=headers
+)
+
+data = response.json()
+print(f"Found {len(data['papers'])} papers")
+````
+  ````javascript
+const axios = require('axios');
+
+const config = {
+  headers: {
+    'Authorization': 'Bearer YOUR_API_KEY',
+    'Content-Type': 'application/json'
+  }
+};
+
+axios.get('https://api.paperguide.com/v1/research', config)
+  .then(response => {
+    console.log(`Found ${response.data.papers.length} papers`);
+  })
+  .catch(error => {
+    console.error('API request failed:', error);
+  });
+````
+</CodeGroup>
+
+## Core Endpoints
+
+<Tabs>
+  <Tab title="Research" icon="search">
+    Access paper search and analysis capabilities.
+
+    <Expandable title="Search Papers" default-open="false">
+      Find papers using keywords, authors, or topics.
+    </Expandable>
+
+    <Expandable title="Analyze Content" default-open="false">
+      Extract insights and summaries from paper content.
+    </Expandable>
+  </Tab>
+  <Tab title="References" icon="book">
+    Manage citations and reference collections.
+
+    <Expandable title="Import References" default-open="false">
+      Add papers to your reference library.
+    </Expandable>
+
+    <Expandable title="Generate Citations" default-open="false">
+      Create formatted citations in various styles.
+    </Expandable>
+  </Tab>
+  <Tab title="Projects" icon="folder">
+    Organize research into projects and folders.
+  </Tab>
+</Tabs>
+
+## Rate Limits and Quotas
+
+<Callout kind="info">
+  API requests are subject to rate limits to ensure fair usage. Check your account for specific limits.
+</Callout>
+
+<ExpandableGroup>
+  <Expandable title="Request Limits" default-open="false">
+    Standard accounts allow 1000 requests per hour. Premium accounts have higher limits.
+  </Expandable>
+  <Expandable title="Data Limits" default-open="false">
+    Individual requests are limited to 10MB of data. Use pagination for large result sets.
+  </Expandable>
+</ExpandableGroup>
+
+## Error Handling
+
+Implement robust error handling for API requests.
+
+<CodeGroup tabs="Python,JavaScript">
+  ````python
+import requests
+from requests.exceptions import RequestException
+
+try:
+    response = requests.get('https://api.paperguide.com/v1/research', headers=headers)
+    response.raise_for_status()
+    
+    data = response.json()
+    # Process successful response
+    
+except requests.exceptions.HTTPError as e:
+    if response.status_code == 401:
+        print("Authentication failed. Check your API key.")
+    elif response.status_code == 429:
+        print("Rate limit exceeded. Wait before retrying.")
+    else:
+        print(f"HTTP error: {e}")
+        
+except requests.exceptions.ConnectionError:
+    print("Network connection error. Check your internet connection.")
+    
+except requests.exceptions.Timeout:
+    print("Request timed out. Try again later.")
+    
+except ValueError:
+    print("Invalid JSON response from API.")
+````
+  ````javascript
+const axios = require('axios');
+
+axios.get('https://api.paperguide.com/v1/research', config)
+  .then(response => {
+    // Process successful response
+    console.log(response.data);
+  })
+  .catch(error => {
+    if (error.response) {
+      // Server responded with error status
+      const status = error.response.status;
+      if (status === 401) {
+        console.error('Authentication failed. Check your API key.');
+      } else if (status === 429) {
+        console.error('Rate limit exceeded. Wait before retrying.');
+      } else {
+        console.error(`API error: ${status} - ${error.response.data.message}`);
+      }
+    } else if (error.request) {
+      // Network error
+      console.error('Network error. Check your connection.');
+    } else {
+      // Other error
+      console.error('Request setup error:', error.message);
+    }
+  });
+````
+</CodeGroup>
+
+## Webhooks
+
+Receive real-time notifications about research updates and analysis completions.
+
+<Expandable title="Webhook Configuration" default-open="false">
+  Set up webhook endpoints in your account settings to receive event notifications.
+</Expandable>
+
+<Expandable title="Event Types" default-open="false">
+  Handle events like paper analysis completion, new recommendations, and project updates.
+</Expandable>
+
+<Callout kind="tip">
+  Use webhooks to trigger automated workflows in your research pipeline.
+</Callout>
+
+## SDKs and Libraries
+
+Official SDKs are available for popular programming languages.
+
+<Tabs>
+  <Tab title="Python SDK" icon="code">
+    ````bash
+    pip install paperguide-sdk
+    ````
+
+    <Expandable title="Installation" default-open="false">
+      Install via pip for easy integration with Python applications.
+    </Expandable>
+  </Tab>
+  <Tab title="JavaScript SDK" icon="code">
+    ````bash
+    npm install paperguide-sdk
+    ````
+
+    <Expandable title="Installation" default-open="false">
+      Use npm to install the JavaScript SDK for web and Node.js applications.
+    </Expandable>
+  </Tab>
+</Tabs>
