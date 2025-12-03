@@ -2,19 +2,22 @@
 title: Introduction
 description: Overview of Paperguide and its core capabilities
 ---
-
 ## Getting Started
 
 Paperguide is an AI-powered research platform designed to transform the research experience for students, researchers, and academics. It offers a suite of tools including a research assistant, reference manager, and writing assistant to streamline reading, writing, and managing research. The platform provides features such as smart discovery, intelligent analysis, and unified management to enhance productivity and uncover deeper insights.
 
-<Columns cols={3}>
-  <Card title="Research Assistant" icon="search" href="#research-assistant">
+he is a hero
+
+<Columns cols="3">
+  <Card title="Research Assistant" href="#research-assistant" icon="search" horizontal="false">
     Discover and analyze academic papers with AI-powered insights and recommendations.
   </Card>
-  <Card title="Reference Manager" icon="book" href="#reference-manager">
+
+  <Card title="Reference Manager" href="#reference-manager" icon="book" horizontal="false">
     Organize and cite your sources efficiently with automated reference generation.
   </Card>
-  <Card title="Writing Assistant" icon="edit" href="#writing-assistant">
+
+  <Card title="Writing Assistant" href="#writing-assistant" icon="edit" horizontal="false">
     Get help with drafting, editing, and structuring your research papers.
   </Card>
 </Columns>
@@ -26,45 +29,50 @@ Paperguide is an AI-powered research platform designed to transform the research
     Paperguide uses advanced AI algorithms to help you find relevant research papers from millions of sources. You can search by keywords, topics, or even upload your own documents for analysis.
 
     <Steps>
-      <Step title="Upload Documents" icon="upload">
+      <Step title="Upload Documents" icon="upload" title-type="p">
         Start by uploading your research documents or PDFs to the platform.
       </Step>
-      <Step title="Define Search Criteria" icon="filter">
+
+      <Step title="Define Search Criteria" icon="filter" title-type="p">
         Specify your research interests, keywords, or topics of interest.
       </Step>
-      <Step title="Review Recommendations" icon="check-circle">
+
+      <Step title="Review Recommendations" icon="check-circle" title-type="p">
         Receive personalized paper recommendations based on AI analysis.
       </Step>
     </Steps>
   </Tab>
+
   <Tab title="Intelligent Analysis" icon="brain">
     The platform provides deep analysis of research papers, including summarization, key findings extraction, and citation tracking.
 
-    <Callout kind="info">
+    <Callout kind="info" collapsed="false">
       Intelligent analysis helps identify trends, gaps, and connections in your research field.
     </Callout>
 
-    <CodeGroup tabs="Python,JavaScript">
-      ````python
-import paperguide
+    <CodeGroup show-lines="true" tabs={[]}>
+      ```python
+      import paperguide
 
-# Analyze a research paper
-paper = paperguide.load_paper('path/to/paper.pdf')
-analysis = paper.analyze()
-print(analysis.summary)
-print(analysis.key_findings)
-````
-      ````javascript
-const { PaperGuide } = require('paperguide');
+      # Analyze a research paper
+      paper = paperguide.load_paper('path/to/paper.pdf')
+      analysis = paper.analyze()
+      print(analysis.summary)
+      print(analysis.key_findings)
+      ```
 
-const pg = new PaperGuide();
-const paper = await pg.loadPaper('path/to/paper.pdf');
-const analysis = await paper.analyze();
-console.log(analysis.summary);
-console.log(analysis.keyFindings);
-````
+      ```javascript
+      const { PaperGuide } = require('paperguide');
+
+      const pg = new PaperGuide();
+      const paper = await pg.loadPaper('path/to/paper.pdf');
+      const analysis = await paper.analyze();
+      console.log(analysis.summary);
+      console.log(analysis.keyFindings);
+      ```
     </CodeGroup>
   </Tab>
+
   <Tab title="Unified Management" icon="folder">
     Manage all your research materials in one place with integrated reference management and collaboration tools.
 
@@ -86,12 +94,13 @@ Paperguide offers robust API integration for seamless connection with other rese
   <Expandable title="API Authentication" default-open="false">
     Use API keys to authenticate your requests. Generate your API key from the Paperguide dashboard.
 
-    ````bash
+    ```bash
     curl -X GET \
       'https://api.paperguide.com/v1/research' \
       -H 'Authorization: Bearer YOUR_API_KEY'
-    ````
+    ```
   </Expandable>
+
   <Expandable title="Webhook Support" default-open="false">
     Set up webhooks to receive real-time notifications about research updates and analysis completions.
   </Expandable>
@@ -101,6 +110,7 @@ Paperguide offers robust API integration for seamless connection with other rese
 
 If you need assistance, our comprehensive documentation covers all features and integrations. Check out the API reference for detailed endpoint information, or visit our changelog for the latest updates.
 
-<Callout kind="tip">
+<Callout kind="tip" collapsed="false">
   Start with our quick start guide to set up your first research project in minutes.
 </Callout>
+
