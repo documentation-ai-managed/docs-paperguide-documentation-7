@@ -36,31 +36,31 @@ yashwanth is a good boy
   </Card>
 </Columns>
 
-<CodeGroup show-lines="true" tabs={[]}
-  ```javascript
-  // Using the web interface:
-  // 1. Click "New Project" in the dashboard
-  // 2. Enter project name and description
-  // 3. Upload initial research papers
-  // 4. Set research goals and keywords
-  ```
+<CodeGroup show-lines="true" tabs={[]}>
+  <Code language="javascript">
+{`// Using the web interface:
+// 1. Click "New Project" in the dashboard
+// 2. Enter project name and description
+// 3. Upload initial research papers
+// 4. Set research goals and keywords`}
+  </Code>
 
-  ```python
-  from paperguide import Project
+  <Code language="python">
+{`from paperguide import Project
 
-  # Create a new research project
-  project = Project.create(
-    name="AI in Education Research",
-    description="Exploring AI applications in educational settings",
-    keywords=["artificial intelligence", "education", "machine learning"]
-  )
+# Create a new research project
+project = Project.create(
+  name="AI in Education Research",
+  description="Exploring AI applications in educational settings",
+  keywords=["artificial intelligence", "education", "machine learning"]
+)
 
-  # Add initial papers
-  project.add_papers([
-    "path/to/paper1.pdf",
-    "path/to/paper2.pdf"
-  ])
-  ```
+# Add initial papers
+project.add_papers([
+  "path/to/paper1.pdf",
+  "path/to/paper2.pdf"
+])`}
+  </Code>
 </CodeGroup>
 
 ## Basic Navigation
@@ -103,7 +103,7 @@ Configure Paperguide to match your research workflow and preferences.
   </Expandable>
 
   <Expandable title="Email Verification" default-open="false">
-    If you don't receive verification emails, check your spam folder or update your email preferences.
+    If you do not receive verification emails, check your spam folder or update your email preferences.
   </Expandable>
 </ExpandableGroup>
 
