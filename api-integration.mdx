@@ -2,16 +2,18 @@
 title: API Integration
 description: Guide to integrating Paperguide's API into your applications
 ---
-
 ## API Overview
 
 Paperguide provides a comprehensive REST API for programmatic access to all platform features. Use the API to integrate research capabilities into your applications.
 
-<Columns cols={2}>
-  <Card title="RESTful Design" icon="code" href="#restful-design">
+hulala hulalal
+
+<Columns cols="2">
+  <Card title="RESTful Design" href="#restful-design" icon="code" horizontal="false">
     Standard REST endpoints with JSON responses for easy integration.
   </Card>
-  <Card title="Comprehensive Coverage" icon="check-circle" href="#comprehensive-coverage">
+
+  <Card title="Comprehensive Coverage" href="#comprehensive-coverage" icon="check-circle" horizontal="false">
     Access to all research assistant, reference management, and writing features.
   </Card>
 </Columns>
@@ -21,58 +23,62 @@ Paperguide provides a comprehensive REST API for programmatic access to all plat
 Secure your API requests with bearer token authentication.
 
 <Steps>
-  <Step title="Generate API Key" icon="key">
+  <Step title="Generate API Key" icon="key" title-type="p">
     Create an API key from your Paperguide account settings.
   </Step>
-  <Step title="Include in Headers" icon="header">
+
+  <Step title="Include in Headers" icon="header" title-type="p">
     Add the Authorization header to all API requests.
   </Step>
-  <Step title="Handle Token Expiration" icon="clock">
+
+  <Step title="Handle Token Expiration" icon="clock" title-type="p">
     Implement token refresh logic for long-running applications.
   </Step>
 </Steps>
 
-<CodeGroup tabs="cURL,Python,JavaScript">
-  ````bash
-curl -X GET \
+<CodeGroup show-lines="true" tabs={[]}>
+  ```bash
+  curl -X GET \
   'https://api.paperguide.com/v1/research' \
   -H 'Authorization: Bearer YOUR_API_KEY' \
   -H 'Content-Type: application/json'
-````
-  ````python
-import requests
+  ```
 
-headers = {
+  ```python
+  import requests
+
+  headers = {
     'Authorization': 'Bearer YOUR_API_KEY',
     'Content-Type': 'application/json'
-}
+  }
 
-response = requests.get(
+  response = requests.get(
     'https://api.paperguide.com/v1/research',
     headers=headers
-)
+  )
 
-data = response.json()
-print(f"Found {len(data['papers'])} papers")
-````
-  ````javascript
-const axios = require('axios');
+  data = response.json()
+  print(f"Found {len(data['papers'])} papers")
+  ```
 
-const config = {
+  ```javascript
+  const axios = require('axios');
+
+  const config = {
   headers: {
     'Authorization': 'Bearer YOUR_API_KEY',
     'Content-Type': 'application/json'
   }
-};
+  };
 
-axios.get('https://api.paperguide.com/v1/research', config)
+  axios.get('https://api.paperguide.com/v1/research', config)
   .then(response => {
     console.log(`Found ${response.data.papers.length} papers`);
   })
   .catch(error => {
     console.error('API request failed:', error);
   });
-````
+  ```
 </CodeGroup>
 
 ## Core Endpoints
@@ -89,6 +95,7 @@ axios.get('https://api.paperguide.com/v1/research', config)
       Extract insights and summaries from paper content.
     </Expandable>
   </Tab>
+
   <Tab title="References" icon="book">
     Manage citations and reference collections.
 
@@ -100,6 +107,7 @@ axios.get('https://api.paperguide.com/v1/research', config)
       Create formatted citations in various styles.
     </Expandable>
   </Tab>
+
   <Tab title="Projects" icon="folder">
     Organize research into projects and folders.
   </Tab>
@@ -107,7 +115,7 @@ axios.get('https://api.paperguide.com/v1/research', config)
 
 ## Rate Limits and Quotas
 
-<Callout kind="info">
+<Callout kind="info" collapsed="false">
   API requests are subject to rate limits to ensure fair usage. Check your account for specific limits.
 </Callout>
 
@@ -115,6 +123,7 @@ axios.get('https://api.paperguide.com/v1/research', config)
   <Expandable title="Request Limits" default-open="false">
     Standard accounts allow 1000 requests per hour. Premium accounts have higher limits.
   </Expandable>
+
   <Expandable title="Data Limits" default-open="false">
     Individual requests are limited to 10MB of data. Use pagination for large result sets.
   </Expandable>
@@ -124,19 +133,19 @@ axios.get('https://api.paperguide.com/v1/research', config)
 
 Implement robust error handling for API requests.
 
-<CodeGroup tabs="Python,JavaScript">
-  ````python
-import requests
-from requests.exceptions import RequestException
+<CodeGroup show-lines="true" tabs={[]}>
+  ```python
+  import requests
+  from requests.exceptions import RequestException
 
-try:
+  try:
     response = requests.get('https://api.paperguide.com/v1/research', headers=headers)
     response.raise_for_status()
     
     data = response.json()
     # Process successful response
     
-except requests.exceptions.HTTPError as e:
+  except requests.exceptions.HTTPError as e:
     if response.status_code == 401:
         print("Authentication failed. Check your API key.")
     elif response.status_code == 429:
@@ -144,19 +153,20 @@ except requests.exceptions.HTTPError as e:
     else:
         print(f"HTTP error: {e}")
         
-except requests.exceptions.ConnectionError:
+  except requests.exceptions.ConnectionError:
     print("Network connection error. Check your internet connection.")
     
-except requests.exceptions.Timeout:
+  except requests.exceptions.Timeout:
     print("Request timed out. Try again later.")
     
-except ValueError:
+  except ValueError:
     print("Invalid JSON response from API.")
-````
-  ````javascript
-const axios = require('axios');
+  ```
 
-axios.get('https://api.paperguide.com/v1/research', config)
+  ```javascript
+  const axios = require('axios');
+
+  axios.get('https://api.paperguide.com/v1/research', config)
   .then(response => {
     // Process successful response
     console.log(response.data);
@@ -180,7 +190,7 @@ axios.get('https://api.paperguide.com/v1/research', config)
       console.error('Request setup error:', error.message);
     }
   });
-````
+  ```
 </CodeGroup>
 
 ## Webhooks
@@ -195,7 +205,7 @@ Receive real-time notifications about research updates and analysis completions.
   Handle events like paper analysis completion, new recommendations, and project updates.
 </Expandable>
 
-<Callout kind="tip">
+<Callout kind="tip" collapsed="false">
   Use webhooks to trigger automated workflows in your research pipeline.
 </Callout>
 
@@ -205,21 +215,23 @@ Official SDKs are available for popular programming languages.
 
 <Tabs>
   <Tab title="Python SDK" icon="code">
-    ````bash
+    ```bash
     pip install paperguide-sdk
-    ````
+    ```
 
     <Expandable title="Installation" default-open="false">
       Install via pip for easy integration with Python applications.
     </Expandable>
   </Tab>
+
   <Tab title="JavaScript SDK" icon="code">
-    ````bash
+    ```bash
     npm install paperguide-sdk
-    ````
+    ```
 
     <Expandable title="Installation" default-open="false">
       Use npm to install the JavaScript SDK for web and Node.js applications.
     </Expandable>
   </Tab>
 </Tabs>
+
