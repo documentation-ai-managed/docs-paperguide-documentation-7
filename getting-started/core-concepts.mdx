@@ -1,0 +1,96 @@
+---
+title: Core Concepts
+description: 'An overview of the core concepts behind Documentation.AI '
+---
+Understand the below core concepts for you take advantage of the [Documentation.AI](http://Documentation.AI) &#x20;
+
+Documentation.AI is build on the principles that docs or knowledge bases should be accessable to both humans and AI. Both developers and non developers should be able to write and update. Documentation should be intellegent and always updated with the help of AI agents.
+
+## AI Native&#x20;
+
+[Documentation.AI](http://Documentation.AI) has built-in AI features help your users find answers with the help AI assistand and your team maintain content more efficiently with AI Agent. Along with this we also have other features such as struture of documenttion, llms.txt, mcp server, on page copy etc for AI agents to&#x20;
+
+## Two Ways to Work: Web Editor and Code Editor
+
+You can write and manage your docs using the web editor or a code editor. Both always stay in sync.
+
+- The [Web Editor Overview](/write-and-publish/web-editor/overview) shows a simple visual editor.
+
+- The [Code Editor Overview](/write-and-publish/code-editor/overview) covers a file‑first, git‑friendly workflow.
+
+- Use the web editor for quick edits or non‑technical contributors.
+
+- Use a code editor for reviews, branches, and automation.
+
+<Columns cols="2">
+  <Card title="Web Editor" href="/write-and-publish/web-editor/overview" icon="monitor" horizontal="false">
+    The easiest way to write, edit, and preview content.
+  </Card>
+
+  <Card title="Code Editor" href="/write-and-publish/code-editor/overview" icon="code" horizontal="false">
+    Ideal for developers who prefer local files and git workflows.
+  </Card>
+</Columns>
+
+## Components: Rich, Reusable Blocks
+
+You can enhance pages with structured building blocks called components. They provide layout, interactivity, and clear patterns for docs.
+
+- See all components in the [Components pages](/components/heading-and-text).
+
+- Use cards, tabs, steps, callouts, code groups, and more.
+
+- Keep text readable while adding structure where it helps.
+
+- Reuse components across concepts, guides, and API pages.
+
+<CodeGroup show-lines="true" tabs={[]}>
+  ```markdown
+  Simple text using standard markdown.
+  ```
+
+  ```tsx
+  <Callout kind="tip">
+
+  Helpful guidance inside a styled block.
+
+  </Callout>
+  ```
+</CodeGroup>
+
+## API Documentation and Playground (If You Have an API)
+
+If your product includes an API, Documentation.AI lets you import your OpenAPI file, organize endpoints, and offer an interactive playground.
+
+- Import schemas: [OpenAPI Import](/api-documentation-and-playground/openapi-import).
+
+- Structure your reference: [Organize API Reference](/api-documentation-and-playground/organize-api-reference).
+
+- Enable live testing with Authentication and Playground setup.
+
+- Keep your API docs synced with code by updating `openapi.yaml`.
+
+## AI Agent
+
+AI Agent helps with writing, proofreading, configuration, and on‑page assistance for writers using a web editor.
+
+&#x20;
+
+## AI Assistant
+
+AI helps with writing, proofreading, search quality, and on‑page assistance for readers. You stay in control of what the AI can access.
+
+- Configure the assistant in [Set Up the AI Assistant](/ai/ai-assistant).
+
+- Tune answer accuracy with [Search Configuration](/ai/search-configuration).
+
+- Add interactive help with the [AI Menu](/ai/ai-menu).
+
+- Manage what external AI tools can access using [`llms.txt`](/ai/llms-txt).
+
+<Callout kind="tip" collapsed="false">
+  AI suggestions help you work faster, but you review and publish changes manually.
+</Callout>
+
+##
+
